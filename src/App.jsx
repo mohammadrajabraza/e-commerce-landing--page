@@ -1,6 +1,9 @@
+import Nav from "./components/Nav";
+
 const App = () => (
   <main className="relative">
-    Nav
+    {/* Add navigation  */}
+    <Nav />
     <section className="xl:padding-1 wide:padding-r padding-b">
       Hero
     </section>
@@ -25,7 +28,6 @@ const App = () => (
     <section className="padding-x padding-y bg-black pb-t">
       Footer
     </section>
-    
   </main>
 );
 
