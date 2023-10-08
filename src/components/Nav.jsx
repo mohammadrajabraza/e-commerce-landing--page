@@ -28,7 +28,7 @@ const Nav = () => {
             ))
           }
         </ul>
-        <div className='flex items-center justify-center gap-3 text-lg tracking-wide max-lg:hidden'>
+        <div className='flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24'>
           <a href='/'>
             Sign in
           </a>
