@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useInView } from 'react-intersection-observer';
 import Button from "../components/Button"
 import ShoeCard from "../components/ShoeCard"
 import { arrowRight } from '../assets/icons'
@@ -8,9 +9,15 @@ import { statistics, shoes } from '../constants'
 const Hero = () => {
 
   const [bigShoeImage, setBigShoeImage] = useState(bigShoe1)
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
+
   return (
     <section
       id="home"
+      ref={ref}
       className="w-full flex flex-col xl:flex-row justify-center min-h-screen gap-10 max-container"
     >
       {/*---------- Left hero section start ----------*/}
@@ -18,8 +25,8 @@ const Hero = () => {
         className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28"
       >
         <p className="text-xl font-montserrat text-coral-red">Our Summer Collections</p>
-        <h1 className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
-          <span className="xl:bg-white xl:whitespace-nowrap relative z-10 pr-10">The New Arrival</span>
+        <h1 className={`transition duration-[1500ms] z-10 mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold ${ inView ? 'translate-x-0 opacity-100' : 'translate-x-[-100vh] opacity-0' }`}>
+          <span className="xl:bg-white xl:whitespace-nowrap z-10 pr-10">The New Arrival</span>
           <br />
           <span className="inline-block text-coral-red mt-3">Nike</span> Shoes
         </h1>

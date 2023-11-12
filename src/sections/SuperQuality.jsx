@@ -1,12 +1,18 @@
+import { useInView } from 'react-intersection-observer';
 import Button from "../components/Button"
 import { shoe8 } from '../assets/images'
 
 const SuperQuality = () => {
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
+
   return (
-    <section id="about-us" className="flex justify-between items-center max-lg:flex-col gap-10 w-full max-container">
+    <section ref={ref} id="about-us" className="flex justify-between items-center max-lg:flex-col gap-10 w-full max-container">
       {/* Left side of section start */}
       <div className="flex flex-1 flex-col">
-        <h2 className="font-palanquin text-4xl capitalize font-bold lg:max-w-lg">
+        <h2 className={`transition duration-[1000ms] font-palanquin text-4xl capitalize font-bold lg:max-w-lg ${inView ? 'translate-y-0 opacity-100' : 'translate-y-[100vh] opacity-0'}`}>
           We provide you <span className="text-coral-red">
             Super
           </span>

@@ -33,7 +33,7 @@ const Nav = () => {
             Sign in
           </a>
           /
-          <a href='/'>Explore now</a>
+          <a href='/' className='animate-continuousShake'>Explore now</a>
         </div>
         <div className='hidden max-lg:block'>
           <img
