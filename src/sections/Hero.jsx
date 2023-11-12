@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useInView } from 'react-intersection-observer';
+import CountUp from 'react-countup';
 import Button from "../components/Button"
 import ShoeCard from "../components/ShoeCard"
 import { arrowRight } from '../assets/icons'
@@ -38,10 +39,22 @@ const Hero = () => {
         <div className="flex items-start justify-starts flex-wrap w-full mt-20 gap-16">
           {
             statistics.map((stats) => (
-              <div key={stats.label}>
-                <p className="text-4xl font-palanquin font-bold">{stats.value}</p>
-                <p className="leading-7 font-montserrat text-slate-gray">{stats.label}</p>
-              </div>
+              <CountUp
+                start={0}
+                end={stats.value > 1000 ? stats.value / 1000: stats.value}
+                suffix={stats.value > 1000 ? 'K+' : ''} 
+                key={stats.label}
+                delay={2}
+                duration={3}
+              >
+                {({ countUpRef }) => (
+                  <div>
+                    <p className="text-4xl font-palanquin font-bold" ref={countUpRef} />
+                    <p className="leading-7 font-montserrat text-slate-gray">{stats.label}</p>
+                  </div>
+                )}
+
+              </CountUp>
             ))
           }
         </div>
